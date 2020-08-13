@@ -13087,7 +13087,7 @@ div#notebook {
 <h1 id="NAVDAT-receiver">NAVDAT receiver<a class="anchor-link" href="#NAVDAT-receiver">&#182;</a></h1><p><font size="1">
 Developed by Konovalov Vitaly (vskonovalov@inbox.ru) for Central Scientific Research Institute "Kurs", 2020 г.
 </font></p>
-<p>This document describes developed model of NAVDAT receiver. Recomendation ITU-R M.2010 (01/2019) [<a href="#links">1</a>] was used as the main description of the protocol.</p>
+<p>This document describes the developed model of the NAVDAT receiver. Recommendation ITU-R M.2010 (01/2019) [<a href="#links">1</a>] was used as the main description of the protocol.</p>
 
 </div>
 </div>
@@ -13109,10 +13109,10 @@ Developed by Konovalov Vitaly (vskonovalov@inbox.ru) for Central Scientific Rese
 
 
 
-<div id="f6db4136-e9ab-46f4-a095-85f71e387e88"></div>
+<div id="cc44c114-aa06-44a1-ad12-d78f53a41f8d"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#f6db4136-e9ab-46f4-a095-85f71e387e88');
+var element = $('#cc44c114-aa06-44a1-ad12-d78f53a41f8d');
 IPython.OutputArea.prototype._should_scroll = function(lines) {
     return false;
 }
@@ -13129,8 +13129,8 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Transmitter-model">Transmitter model<a class="anchor-link" href="#Transmitter-model">&#182;</a></h2><p>In this document the simplified model of transmitter is used. It does not implement MIS, TIS and DS streams and all the data cells are modulated with the same modulation. Also, to compare the model perfomance for different carrier occupancy modes, the frames for each mode is generated.</p>
-<p>To prettify the pictures, transmitter generates two sequential frames.</p>
+<h2 id="Transmitter-model">Transmitter model<a class="anchor-link" href="#Transmitter-model">&#182;</a></h2><p>In this document, the simplified model of the transmitter is used. It does not implement MIS, TIS and DS streams and all the data cells are modulated with the same modulation. Also, to compare the model performance for different carrier occupancy modes, the frames for each mode is generated.</p>
+<p>To prettify the pictures, the transmitter generates two sequential frames.</p>
 
 </div>
 </div>
@@ -13163,7 +13163,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Channel">Channel<a class="anchor-link" href="#Channel">&#182;</a></h2><p>According to the information from [<a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2443-2019-PDF-E.pdf">1, table 5, p.7</a>] and [<a href="https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.1321-5-201507-I!!PDF-E.pdf">3</a>] there is two ways of signal propagation which should be considered: <em>ground wave propagation</em> (for day time) and <em>sky-wave propagation</em> (for night time). For <em>ground wave propagation</em> simple AWGN channel could be used and for <em>sky-wave propagation</em> we will use tap-model for 700 KHz carrier described in [<a href="https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.1321-5-201507-I!!PDF-E.pdf">3, clause 3, p.2</a>]. However this model does not fully met requerements of [<a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2443-2019-PDF-E.pdf">1, table 4, p.6</a>], because it does not implement time selectiveness.</p>
+<h2 id="Channel">Channel<a class="anchor-link" href="#Channel">&#182;</a></h2><p>According to the information from [<a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2443-2019-PDF-E.pdf">1, table 5, p.7</a>] and [<a href="https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.1321-5-201507-I!!PDF-E.pdf">3</a>] there is two ways of signal propagation which should be considered: <em>ground wave propagation</em> (for day time) and <em>sky-wave propagation</em> (for night time). For <em>ground wave propagation</em> simple AWGN channel could be used and for <em>sky-wave propagation</em> we will use tap-model for 700 kHz carrier described in [<a href="https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.1321-5-201507-I!!PDF-E.pdf">3, clause 3, p.2</a>]. However, this model does not fully meet the requirements of [<a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2443-2019-PDF-E.pdf">1, table 4, p.6</a>], because it does not implement time selectiveness.</p>
 <p>The plots of amplitude attenuation for the three different distances (100 km, 200 km and 500 km) are given below.</p>
 
 </div>
@@ -13203,7 +13203,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="AWGN">AWGN<a class="anchor-link" href="#AWGN">&#182;</a></h3><p>To prettify the plots the integer sample delay is added to the beginning of the transmittion and the the AWGN channel is applied. The transmitted signal is showed below:</p>
+<h3 id="AWGN">AWGN<a class="anchor-link" href="#AWGN">&#182;</a></h3><p>To prettify the plots the integer sample delay is added to the beginning of the transmission and then the AWGN noise is applied. The transmitted signal is shown below:</p>
 
 </div>
 </div>
@@ -13296,7 +13296,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Receiver-front-end-distortions">Receiver front-end distortions<a class="anchor-link" href="#Receiver-front-end-distortions">&#182;</a></h2><p>Receiver front-end distortions is mostly depends on difference between clock source in a transmitter and a receiver.</p>
+<h2 id="Receiver-front-end-distortions">Receiver front-end distortions<a class="anchor-link" href="#Receiver-front-end-distortions">&#182;</a></h2><p>Receiver front-end distortions mostly depend on the difference between clock source in a transmitter and a receiver.</p>
 
 </div>
 </div>
@@ -13304,7 +13304,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Carier-Frequency-Offset">Carier Frequency Offset<a class="anchor-link" href="#Carier-Frequency-Offset">&#182;</a></h3><p>If both receiver and transmitter use digital mixers, CFO could be derived from clock sources occurancy. Here CFO frequency is calculated from occurancy value in ppm and 1 ppm =&gt; 1 Hz CFO.</p>
+<h3 id="Carier-Frequency-Offset">Carier Frequency Offset<a class="anchor-link" href="#Carier-Frequency-Offset">&#182;</a></h3><p>If both receiver and transmitter use digital mixers, CFO could be derived from clock source accuracy. Here CFO frequency is calculated from accuracy value in ppm and 1 ppm =&gt; 1 Hz CFO.</p>
 
 </div>
 </div>
@@ -13348,7 +13348,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sampling-Rate-Offset">Sampling Rate Offset<a class="anchor-link" href="#Sampling-Rate-Offset">&#182;</a></h3><p>SRO also depends on the difference between sample rates in receiver and transmitter. In most cases SRO is not large and does not afferct perfomance of the algorithms. This model does not implement SRO distortion.</p>
+<h3 id="Sampling-Rate-Offset">Sampling Rate Offset<a class="anchor-link" href="#Sampling-Rate-Offset">&#182;</a></h3><p>SRO also depends on the difference between sample rates in the receiver and transmitter. In most cases, SRO is not large and does not affect the performance of the algorithms. This model does not implement SRO distortion.</p>
 
 </div>
 </div>
@@ -13356,7 +13356,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Receiver-model">Receiver model<a class="anchor-link" href="#Receiver-model">&#182;</a></h1><p>The receiver model described in this document consists of frame acqusition, coarse &amp; fine STO estimation, CFO estimation &amp; compensation (limited by  ±104 Hz) and channel estimation &amp; compensation.</p>
+<h1 id="Receiver-model">Receiver model<a class="anchor-link" href="#Receiver-model">&#182;</a></h1><p>The receiver model described in this document consists of frame acquisition, coarse &amp; fine STO estimation, CFO estimation &amp; compensation (limited by  ±104 Hz) and channel estimation &amp; compensation.</p>
 
 </div>
 </div>
@@ -13367,9 +13367,9 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Symbol-timing-offset-estimation">Symbol timing offset estimation<a class="anchor-link" href="#Symbol-timing-offset-estimation">&#182;</a></h2><h3 id="Coarse-symbol-timing-offset-and-frame-acqusition">Coarse symbol timing offset and frame acqusition<a class="anchor-link" href="#Coarse-symbol-timing-offset-and-frame-acqusition">&#182;</a></h3><p>For frame acqusition and coarse STO estimation the algorith of GI autocorrelation is used. The power of received signal depends on the frame frequency occupacy mode, because of different number of subcarriers used. To handle this the resulting metric normalize squared amplitude of autocorrelation by squared moving average of signal power (GI size). If this metric exceeds threshold the symbol is acquired and the following number of samples, equal to the frame length, are ignored.</p>
-<p>To avoid to early detection due to noise in channel the algorithm also applies power window.</p>
-<p>The fractional CFO estimation is joint with coarse STO estimation and could estimate CFO in the range ±20.83 Hz. However to better estimate CFO we need to calculate fine STO first.</p>
+<h2 id="Symbol-timing-offset-estimation">Symbol timing offset estimation<a class="anchor-link" href="#Symbol-timing-offset-estimation">&#182;</a></h2><h3 id="Coarse-symbol-timing-offset-and-frame-acquisition">Coarse symbol timing offset and frame acquisition<a class="anchor-link" href="#Coarse-symbol-timing-offset-and-frame-acquisition">&#182;</a></h3><p>For frame acquisition and coarse STO estimation, the algorithm of GI autocorrelation is used. The power of the received signal depends on the frame frequency occupancy mode, because of the different number of subcarriers used. To handle this the resulting metric normalize squared amplitude of autocorrelation by the squared moving average of signal power (GI size). If this metric exceeds a threshold the symbol is acquired and the following number of samples, equal to the frame length, are ignored.</p>
+<p>To avoid early detection due to noise in the channel the algorithm also applies power window.</p>
+<p>The fractional CFO estimation is joint with coarse STO estimation and could estimate CFO in the range ±20.83 Hz. However, to better estimate CFO we need to calculate fine STO first.</p>
 
 </div>
 </div>
@@ -13493,8 +13493,8 @@ Mode 23
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Fine-symbol-timing-offset-estimation">Fine symbol timing offset estimation<a class="anchor-link" href="#Fine-symbol-timing-offset-estimation">&#182;</a></h3><p>To estimate fine STO the algorithm of cross-correlation with known header is applied. Due to the nested header structure, only one header (header for 229 subcarriers) can be used to detect frames in different carrier ocupancy modes.</p>
-<p>This algorithm is also used to detect integer part of CFO. Instead of only 1 correlator, we use several, each with differend CFO shift applied (-83.33, -41.67, 0, 41.67 и 83.33 Hz). With the fractional CFO estimation algorithm this method can estimate CFO in range ±104 Hz. More correlations could be added if wider CFO range is nesseccary.</p>
+<h3 id="Fine-symbol-timing-offset-estimation">Fine symbol timing offset estimation<a class="anchor-link" href="#Fine-symbol-timing-offset-estimation">&#182;</a></h3><p>To estimate fine STO the algorithm of cross-correlation with known header is applied. Due to the nested header structure, only one header (header for 229 subcarriers) can be used to detect frames in different carrier occupancy modes.</p>
+<p>This algorithm is also used to detect the integer part of CFO. Instead of only 1 correlator, we use several, each with different CFO shift applied (-83.33, -41.67, 0, 41.67 и 83.33 Hz). With the fractional CFO estimation algorithm, this method can estimate CFO in range ±104 Hz. More correlations could be added if a wider CFO range is necessary.</p>
 
 </div>
 </div>
@@ -13623,7 +13623,7 @@ Mode 23
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Translation-to-the-frequency-domain">Translation to the frequency domain<a class="anchor-link" href="#Translation-to-the-frequency-domain">&#182;</a></h2><p>After fine STO the frames could be extracted from samples and translated to the frequency domain. FFT algorithm is used here. To compensate IFFT scaling the samples is divided by square root of <em>N</em> (FFT size).</p>
+<h2 id="Translation-to-the-frequency-domain">Translation to the frequency domain<a class="anchor-link" href="#Translation-to-the-frequency-domain">&#182;</a></h2><p>After fine STO the frames could be extracted from samples and translated to the frequency domain. The FFT algorithm is used here. To compensate IFFT scaling the samples are divided by the square root of <em>N</em> (FFT size).</p>
 
 </div>
 </div>

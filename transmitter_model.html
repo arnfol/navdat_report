@@ -13080,8 +13080,8 @@ div#notebook {
 <h1 id="NAVDAT-Transmitter">NAVDAT Transmitter<a class="anchor-link" href="#NAVDAT-Transmitter">&#182;</a></h1><p><font size="1">
 Developed by Konovalov Vitaly (vskonovalov@inbox.ru) for Central Scientific Research Institute "Kurs", 2020 г.
 </font></p>
-<p>This document describes developed model of NAVDAT transmitter. Recomendation ITU-R M.2010 (01/2019) [<a href="#links">1</a>] was used as the main description of the protocol.</p>
-<p>Recomendation ITU-R M.2010 is based on the DRM standard and, unfortunetly, not completely describes all the details of NAVDAT system. In this document I tried to compile information from both standarts, but sometimes I was unable to find details. These parts are marked as <strong>Judgement calls</strong> and describes the details of how and why I made the following decisions. They could be wrong, though.</p>
+<p>This document describes the developed model of the NAVDAT transmitter. Recommendation ITU-R M.2010 (01/2019) [<a href="#links">1</a>] was used as the main description of the protocol.</p>
+<p>Recommendation ITU-R M.2010 is based on the DRM standard and, unfortunately, not completely describes all the details of the NAVDAT system. In this document, I tried to compile information from both standards, but sometimes I was unable to find details. These parts are marked as <strong>Judgement calls</strong> and describes the details of how and why I made the following decisions. They could be wrong, though.</p>
 <p>Furthermore, this document describes modulation, pilots and streams insertion and symbol composition, but not the coding.</p>
 
 </div>
@@ -13104,10 +13104,10 @@ Developed by Konovalov Vitaly (vskonovalov@inbox.ru) for Central Scientific Rese
 
 
 
-<div id="48dd0503-621e-4a38-b04e-29ae632ff1e0"></div>
+<div id="338663a6-27f1-4a11-8e50-bb792492d7dc"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#48dd0503-621e-4a38-b04e-29ae632ff1e0');
+var element = $('#338663a6-27f1-4a11-8e50-bb792492d7dc');
 IPython.OutputArea.prototype._should_scroll = function(lines) {
     return false;
 }
@@ -13124,7 +13124,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Modulation">Modulation<a class="anchor-link" href="#Modulation">&#182;</a></h2><p>NAVDAT protocol use 3 types of modulation (QAM4, QAM16 и QAM64) for data signals and BPSK for pilot signals. According to the documentation, different streams could be modulated differently, see the following table:</p>
+<h2 id="Modulation">Modulation<a class="anchor-link" href="#Modulation">&#182;</a></h2><p>NAVDAT protocol uses 3 types of modulation (QAM4, QAM16 и QAM64) for data signals and BPSK for pilot signals. According to the documentation, different streams could be modulated differently, see the following table:</p>
 <table>
 <thead><tr>
 <th>Stream</th>
@@ -13158,7 +13158,7 @@ IPython.OutputArea.prototype._should_scroll = function(lines) {
 </tr>
 </tbody>
 </table>
-<blockquote><p><strong>Judgement call:</strong> TIS stream has 63 bit length, which is not divisable by modulation size of QAM4 or QAM16 without a remainder. To handle this I assume virtual 64th bit of TIS stream always be 0.</p>
+<blockquote><p><strong>Judgement call:</strong> TIS stream has 63 bits length, which is not divisible by modulation size of QAM4 or QAM16 without a remainder. To handle this I assume virtual 64th bit of TIS stream always be 0.</p>
 </blockquote>
 <p>NAVDAT documentation  [<a href="#links">1</a>] does not describes modulation of signal completely, so, according to the DRM documentation [<a href="#links">2, clause 7.4, p. 105 &amp; clause 8.4.2.2, p. 120</a>], we have following normalization factors:</p>
 <ul>
@@ -13266,12 +13266,12 @@ Symbol 3: [-113, -107, -101, -95, -89, -83, -77, -71, -65, -59, -53, -47, -41, -
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Pilot-signal-amplitude">Pilot-signal amplitude<a class="anchor-link" href="#Pilot-signal-amplitude">&#182;</a></h4><p>Section <em>Gain references</em> of DRM standard [<a href="#links">2</a>] describes additional gain of pilots on edges of the spectrum, however NAVDAT documentation [<a href="#links">1</a>] never mentions it. So we use information from section <em>Frequency references</em> for pilot amplitude value:</p>
+<h4 id="Pilot-signal-amplitude">Pilot-signal amplitude<a class="anchor-link" href="#Pilot-signal-amplitude">&#182;</a></h4><p>Section <em>Gain references</em> of DRM standard [<a href="#links">2</a>] describes the additional gain of pilots on edges of the spectrum, however, NAVDAT documentation [<a href="#links">1</a>] never mentions it. So we use information from section <em>Frequency references</em> for pilot amplitude value:</p>
 <ul>
 <li>For robustness modes A, B, C and D, all frequency reference cells should have the power gain of 2, i.e. <strong>a = sqrt(2)</strong></li>
 </ul>
-<h4 id="Pilot-signal-phase">Pilot-signal phase<a class="anchor-link" href="#Pilot-signal-phase">&#182;</a></h4><p>NAVDAT documentation [<a href="#links">1, annex 3, section 1.6, table 3</a>] describes pilot phase sequence, but does not describe how it should be mapped into pilot carriers. DRM standard also describes calculation of pilots phases [<a href="#links">2, clause 8.4.4.3, p. 125</a>], however values of pilot phase sequences from NAVDAT does not correspond with DRM formulas.</p>
-<blockquote><p><strong>Judgement call:</strong> Here I implement the most simple solution: phases are generated cyclically from pilot phase sequence, starting from the lowest negative subcarriers of the first symbol to the highest positive subcarriers of the last one. I assume that this method is wrong, because it looks like the pilot-signal phases of lower subcarrier modes should be the subset of 229 subcarrier mode.</p>
+<h4 id="Pilot-signal-phase">Pilot-signal phase<a class="anchor-link" href="#Pilot-signal-phase">&#182;</a></h4><p>NAVDAT documentation [<a href="#links">1, annex 3, section 1.6, table 3</a>] describes the pilot phase sequence but does not describe how it should be mapped into pilot carriers. DRM standard also describes the calculation of pilots phases [<a href="#links">2, clause 8.4.4.3, p. 125</a>], however, values of pilot phase sequences from NAVDAT do not correspond with DRM formulas.</p>
+<blockquote><p><strong>Judgement call:</strong> Here I implement the most simple solution: phases are generated cyclically from the pilot phase sequence, starting from the lowest negative subcarriers of the first symbol to the highest positive subcarriers of the last one. I assume that this method is wrong because it looks like the pilot-signal phases of lower subcarrier modes should be the subset of 229 subcarrier mode.</p>
 </blockquote>
 
 </div>
@@ -13280,7 +13280,7 @@ Symbol 3: [-113, -107, -101, -95, -89, -83, -77, -71, -65, -59, -53, -47, -41, -
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Stream-mapping-in-frame">Stream mapping in frame<a class="anchor-link" href="#Stream-mapping-in-frame">&#182;</a></h3><p>NAVDAT documentation describes the order of MIS, TIS and DS streams in frame, but does not describe the cells in frame assigned for each stream. On the other hand, DRM documentation [<a href="#links">2</a>] give us details on how it's streams are mapped to the frames. Moreover, there is a following similaruty between DRM and NAVDAT streams:</p>
+<h3 id="Stream-mapping-in-frame">Stream mapping in frame<a class="anchor-link" href="#Stream-mapping-in-frame">&#182;</a></h3><p>NAVDAT documentation describes the order of MIS, TIS and DS streams in a frame, but does not describe the cells in frame assigned for each stream. On the other hand, DRM documentation [<a href="#links">2</a>] give us details on how it's streams are mapped to the frames. Moreover, there is the following similarity between DRM and NAVDAT streams:</p>
 <table>
 <thead><tr>
 <th style="text-align:center">NAVDAT</th>
@@ -13302,15 +13302,15 @@ Symbol 3: [-113, -107, -101, -95, -89, -83, -77, -71, -65, -59, -53, -47, -41, -
 </tr>
 </tbody>
 </table>
-<p>However, it is only a similarity. In these standards streams have different data sizes and symbol occupancy, so we cannot just implement DRM scheme.</p>
-<h4 id="MIS">MIS<a class="anchor-link" href="#MIS">&#182;</a></h4><p>MIS contain data about frame modulation and spectrum occupancy. MIS is always modulated with QAM4 and consist of 14 bits [<a href="#links">1</a>], which means it always occupy 7 cells. To achive extraction of data about frame spectrum, MIS should occupy subcarriers available in all spectrum occupancy modes (from -11 to 11).</p>
-<p>In DRM stream FAC occupies lowest positive subcarriers [<a href="#links">2</a>, clause 8.3, p. 118], shared by all the spectrum occupancy modes. However, it is implemented that way because in DRM some spectrum modes are assymetrical relative to carrier frequency, so it is not mandatory.</p>
-<blockquote><p><strong>Judgement call:</strong> I assume that for MIS field it is possible to chose any cell from the 18 not pilot cells of the first symbol. To follow the DRM analogue, here I use subcarriers 1, 2, 4, 5, 6, 7 and 8.</p>
+<p>However, it is only a similarity. In these standards streams have different data sizes and symbol occupancy, so we cannot just implement the DRM scheme.</p>
+<h4 id="MIS">MIS<a class="anchor-link" href="#MIS">&#182;</a></h4><p>MIS contains data about frame modulation and spectrum occupancy. MIS is always modulated with QAM4 and consists of 14 bits [<a href="#links">1</a>], which means it always occupies 7 cells. To simplify the extraction of data about frame spectrum, MIS should occupy subcarriers available in all spectrum occupancy modes (from -11 to 11).</p>
+<p>In DRM stream FAC occupies lowest positive subcarriers [<a href="#links">2</a>, clause 8.3, p. 118], shared by all the spectrum occupancy modes. However, it is implemented that way because in DRM some spectrum modes are asymmetrical relative to the carrier frequency, so it is not mandatory.</p>
+<blockquote><p><strong>Judgement call:</strong> I assume that for the MIS field it is possible to choose any cell from the 18 not pilot cells of the first symbol. To follow the DRM analog, here I use subcarriers 1, 2, 4, 5, 6, 7 and 8.</p>
 </blockquote>
-<h4 id="TIS">TIS<a class="anchor-link" href="#TIS">&#182;</a></h4><p>TIS contain data about transmitter, time and DS coding. TIS is modulated with either QAM4 or QAM16 and always consist of 63 bits [<a href="#links">1</a>]. Depending on modulation TIS occupy either 16 or 32 cells.</p>
-<blockquote><p><strong>Judgement call:</strong> There is no need to map TIS into the certain cells like MIS. Moreover for different spectrum occupancies and modulations TIS could occupy different number of symbols. Thus TIS is mapped to the cells unused by pilots and MIS, starting from the lowest negative subcarriers of the first symbol.</p>
+<h4 id="TIS">TIS<a class="anchor-link" href="#TIS">&#182;</a></h4><p>TIS contains data about the transmitter, time and DS coding. TIS is modulated with either QAM4 or QAM16 and always consists of 63 bits [<a href="#links">1</a>]. Depending on modulation TIS occupies either 16 or 32 cells.</p>
+<blockquote><p><strong>Judgement call:</strong> There is no need to map TIS into certain cells like MIS. Moreover, for different spectrum occupancies and modulations, TIS could occupy a different number of symbols. Thus TIS is mapped to the cells unused by pilots and MIS, starting from the lowest negative subcarriers of the first symbol.</p>
 </blockquote>
-<h4 id="DS">DS<a class="anchor-link" href="#DS">&#182;</a></h4><p>According to the  [<a href="#links">2, clause 8.6 &amp; 7.7, p. 133 &amp; 114</a>] the DS is mapped to the unused cells of the lowest subcarriers of the first symbol to the highest positive subcarriers of the last symbol.</p>
+<h4 id="DS">DS<a class="anchor-link" href="#DS">&#182;</a></h4><p>According to the [<a href="#links">2, clause 8.6 &amp; 7.7, p. 133 &amp; 114</a>] the DS is mapped to the unused cells of the lowest subcarriers of the first symbol to the highest positive subcarriers of the last symbol.</p>
 <p>Below the representation of stream mapping is given:</p>
 
 </div>
@@ -13425,9 +13425,9 @@ Sample frequency: 12.0 KHz
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>These values meet the values of destance between subcarriers from [<a href="#links">1, annex 3, clause 1.3</a>]. So the sample frequency is 12 KHz.</p>
-<p>For power normalization the signal after FFT is divided by square root of <em>N</em>.</p>
-<p>On the diagrams below the results of translation frame to the time domain are given.</p>
+<p>These values meet the values of distance between subcarriers from [<a href="#links">1, annex 3, clause 1.3</a>]. So the sampling frequency is 12 kHz.</p>
+<p>For power normalization, the signal after FFT is divided by square root of <em>N</em>.</p>
+<p>On the diagrams below the results of the translation frame to the time domain are given.</p>
 
 </div>
 </div>
